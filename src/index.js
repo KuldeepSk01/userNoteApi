@@ -1,17 +1,14 @@
 const express = require("express");   // this is importing package
 const app = express();   // to create application object 
-const dotenv = require("dotenv");
 const cors = require("cors");
-const mypath = require("path");
-
+const dotenv = require("dotenv");
+dotenv.config();
 const quotes = require("./quotes.json");
 const userRouter = require("./Routers/userRoutes");
 const noteRouter = require("./Routers/noteRouter");
 const { default: mongoose } = require("mongoose");
 
-console.log("path = "+mypath.dirname("/Users/skboss/Desktop/chatApp/backend/src/"))
 
-dotenv.config({path:mypath.resolve('/Users/skboss/Desktop/chatApp/backend/src/','.env')});
 
 app.use(express.json()); 
 app.use(cors());
