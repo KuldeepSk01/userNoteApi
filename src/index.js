@@ -2,13 +2,16 @@ const express = require("express");   // this is importing package
 const app = express();   // to create application object 
 const dotenv = require("dotenv");
 const cors = require("cors");
+const mypath = require("path");
 
 const quotes = require("./quotes.json");
 const userRouter = require("./Routers/userRoutes");
 const noteRouter = require("./Routers/noteRouter");
 const { default: mongoose } = require("mongoose");
 
-dotenv.config();
+console.log("path = "+mypath.dirname("/Users/skboss/Desktop/chatApp/backend/src/"))
+
+dotenv.config({path:mypath.resolve('/Users/skboss/Desktop/chatApp/backend/src/','.env')});
 
 app.use(express.json()); 
 app.use(cors());
@@ -36,8 +39,8 @@ app.use("/notes",noteRouter);
 //     res.send("Hello Send Api.."+quotes.limit);
 // });
 
-const port = process.env.PORT || 6000;
-const url = process.env.MONGO_URL || "mongodb+srv://SkBoss:admin@bossmongoscluster.e3a3s.mongodb.net/notes_db";
+const port = process.env.PORT || 4000;
+const url = process.env.MONGO_URL;
 
 console.log("MONGO URL = "+url + "And port "+port)
 mongoose.connect(url)
