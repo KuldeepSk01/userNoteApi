@@ -13,6 +13,11 @@ dotenv.config();
 app.use(express.json()); 
 app.use(cors());
 
+app.get("/",(req,res)=>{
+    console.log("Note api is running...on the llive server");
+res.send("Note api is running...on the llive server");
+})
+
 
 //how to define middleware 
 app.use((req,res,next)=>{
