@@ -1,14 +1,15 @@
 const express = require("express");   // this is importing package
 const app = express();   // to create application object 
-const cors = require("cors");
 const dotenv = require("dotenv");
-dotenv.config();
+const cors = require("cors");
+const mypath = require("path");
+
 const quotes = require("./quotes.json");
 const userRouter = require("./Routers/userRoutes");
 const noteRouter = require("./Routers/noteRouter");
 const { default: mongoose } = require("mongoose");
 
-
+dotenv.config({path:mypath.resolve('/Users/skboss/Desktop/chatApp/backend/src/','.env')});
 
 app.use(express.json()); 
 app.use(cors());

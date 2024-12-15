@@ -1,6 +1,15 @@
 const jwt = require("jsonwebtoken");
 const userModel = require("../model/user");
 const bcrypt = require("bcrypt");
+const dotenv = require("dotenv");
+ const mypath = require("path");
+
+dotenv.config({path:mypath.resolve('/Users/skboss/Desktop/chatApp/backend/src/','.env')});
+
+
+
+
+
 const SECRATE_KEY = process.env.SECRATE_KEY;
 
 
