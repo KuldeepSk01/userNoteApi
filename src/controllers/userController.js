@@ -2,15 +2,8 @@ const jwt = require("jsonwebtoken");
 const userModel = require("../model/user");
 const bcrypt = require("bcrypt");
 const dotenv = require("dotenv");
- const mypath = require("path");
-
-dotenv.config({path:mypath.resolve('/Users/skboss/Desktop/chatApp/backend/src/','.env')});
-
-
-
-
-
-const SECRATE_KEY = process.env.SECRATE_KEY;
+dotenv.config();
+const sKey = process.env.SECRATE_KEY;
 
 
 
@@ -37,7 +30,7 @@ const signUp = async (req, res) => {
 
         const token = jwt.sign({
             email: result.userEmail, id: result._id
-        }, SECRATE_KEY);
+        }, sKey);
 
         res.status(201).json({ user: result, token: token });
 
@@ -62,7 +55,7 @@ const signIn = async (req, res) => {
                 );
             }
     
-            const token = jwt.sign({email: existUser.userEmail, id: existUser._id}, SECRATE_KEY);
+            const token = jwt.sign({email: existUser.userEmail, id: existUser._id}, sKey);
             res.status(200).json({
                 status: 200,
                 message: "User Login succesfully.",
